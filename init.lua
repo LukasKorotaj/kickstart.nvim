@@ -164,6 +164,29 @@ vim.opt.scrolloff = 10
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+--Should fix diagnostics
+vim.diagnostic.config {
+  virtual_text = false, -- Disable inline diagnostics for a cleaner look
+  signs = true, -- Show signs in the gutter
+  underline = true, -- Underline problematic code
+  update_in_insert = false, -- Update diagnostics only after leaving insert mode
+  float = {
+    focusable = false, -- Makes the window non-interactive
+    style = 'minimal', -- Minimalistic floating window
+    border = 'rounded', -- Adds a rounded border around the window
+    source = 'always', -- Show the source of the diagnostic (e.g., Metals)
+    header = '', -- Optional header for the floating window
+    prefix = '', -- Prefix for the diagnostic message
+  },
+}
+
+--should make the windows show when under cursor
+vim.api.nvim_create_autocmd('CursorHold', {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focusable = false })
+  end,
+})
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
