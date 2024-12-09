@@ -157,6 +157,10 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'rounded', -- Options: "single", "double", "rounded", "solid", or "shadow"
+})
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 --
