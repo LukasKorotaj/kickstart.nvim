@@ -98,6 +98,9 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+--obsidian conceal level
+vim.opt.conceallevel = 1
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -189,6 +192,16 @@ vim.api.nvim_create_autocmd('CursorHold', {
   callback = function()
     vim.diagnostic.open_float(nil, { focusable = false })
   end,
+})
+
+-- If you want to use "~", you need to prefix the vault path with vim.fn.expand "~"
+local vault_location = '~/vaults/personal/**.md'
+local group = vim.api.nvim_create_augroup('obsidian_cmds', { clear = true })
+vim.api.nvim_create_autocmd('BufAdd', {
+  command = 'ObsidianOpen',
+  pattern = { vault_location },
+  group = group,
+  desc = 'Opens the current buffer in Obsidian',
 })
 
 -- Diagnostic keymaps
