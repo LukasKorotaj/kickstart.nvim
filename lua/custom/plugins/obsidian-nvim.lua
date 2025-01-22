@@ -18,6 +18,9 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   opts = {
+    ui = {
+      block_ids = { hl_group = 'ObsidianBlockID' },
+    },
     workspaces = {
       {
         name = 'personal',
