@@ -23,12 +23,16 @@ return {
     },
     workspaces = {
       {
-        name = 'personal',
-        path = '~/vaults/personal',
+        name = 'content',
+        path = '~/vaults/personal/quartz-notes/content',
       },
       {
-        name = 'work',
-        path = '~/vaults/work',
+        name = 'personal',
+        path = '~/vaults/personal/Plans',
+      },
+      {
+        name = 'university',
+        path = '~/vaults/personal/University',
       },
     },
 

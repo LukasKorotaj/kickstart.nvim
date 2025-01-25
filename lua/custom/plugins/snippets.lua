@@ -7,6 +7,31 @@ local fmt = require('luasnip.extras.fmt').fmt
 local fmta = require('luasnip.extras.fmt').fmta
 
 return {
+  ls.add_snippets('lua', {
+    s(
+      'snippet',
+      fmt(
+        [=[
+      s(
+        '{}',
+        fmt(
+          [[
+          {}
+      ]],
+          {{
+            i(1, '{}'),
+          }}
+        )
+      ),
+    ]=],
+        {
+          i(1, 'Name'),
+          i(2, 'Content'),
+          i(3, 'Placeholder'),
+        }
+      )
+    ),
+  }),
   ls.add_snippets('markdown', {
     s(
       'table',
@@ -62,6 +87,28 @@ return {
         {
           i(1, 'Quote goes here'), -- Placeholder for the quote
           i(2, 'Author or Source'), -- Placeholder for the author or source
+        }
+      )
+    ),
+    s(
+      'comment',
+      fmt(
+        [[
+      %%=={}==%%
+    ]],
+        {
+          i(1, 'Comment goes here'),
+        }
+      )
+    ),
+    s(
+      'test',
+      fmt(
+        [[
+        {}
+    ]],
+        {
+          i(1, 'test'),
         }
       )
     ),
