@@ -175,6 +175,14 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+--some java keybinds
+vim.keymap.set('n', '<leader>j', '', { desc = 'Open [J]ava options' })
+vim.keymap.set('n', '<leader>jr', '<cmd>JavaRunnerRunMain<CR>', { desc = '[R]un Main' })
+vim.keymap.set('n', '<leader>js', '<cmd>JavaRunnerStopMain<CR>', { desc = '[S]top Main' })
+vim.keymap.set('n', '<leader>jc', '<cmd>JavaTestRunCurrentClass<CR>', { desc = 'Test Current [C]lass' })
+vim.keymap.set('n', '<leader>jm', '<cmd>JavaTestRunCurrentMethod<CR>', { desc = 'Test Current [M]ethod' })
+vim.keymap.set('n', '<leader>jv', '<cmd>JavaTestViewLastReport<CR>', { desc = 'Test [V]iew Last Report' })
+
 --Should fix diagnostics
 vim.diagnostic.config {
   virtual_text = false, -- Disable inline diagnostics for a cleaner look
@@ -714,6 +722,18 @@ require('lazy').setup({
             }
 
             require('lspconfig').jdtls.setup {
+              root_markers = {
+                'settings.gradle',
+                'settings.gradle.kts',
+                'pom.xml',
+                'build.gradle',
+                'mvnw',
+                'gradlew',
+                'build.gradle',
+                'build.gradle.kts',
+                '.git',
+                '.project',
+              },
               -- Your custom nvim-java configuration goes here
             }
           end,
