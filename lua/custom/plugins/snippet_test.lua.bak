@@ -1,0 +1,19 @@
+local ls = require 'luasnip'
+local s = ls.snippet
+local t = ls.text_node
+local latex_checker = require 'custom.plugins.latex_checker'
+
+-- Define a snippet that is only available inside LaTeX blocks
+return {
+  ls.add_snippets('markdown', {
+    s({
+      trig = 'eq',
+      name = 'Equation',
+      dscr = 'Insert a LaTeX equation block',
+    }, {
+      t { 'test' },
+    }, {
+      condition = latex_checker.is_cursor_in_latex_block,
+    }),
+  }),
+}

@@ -83,8 +83,9 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
-
+--
 -- Set <space> as the leader key
+--
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -505,6 +506,7 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'nvim-java/nvim-java',
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -706,6 +708,15 @@ require('lazy').setup({
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
+          jdtls = function()
+            require('java').setup {
+              -- Your custom jdtls settings goes here
+            }
+
+            require('lspconfig').jdtls.setup {
+              -- Your custom nvim-java configuration goes here
+            }
+          end,
         },
       }
     end,
@@ -781,6 +792,19 @@ require('lazy').setup({
           --   end,
           -- },
         },
+        config = function()
+          local luasnip = require 'luasnip'
+
+          -- Enable autosnippets
+          luasnip.config.setup {
+            enable_autosnippets = true,
+          }
+          vim.keymap.set('i', '<C-k>', function()
+            if luasnip.expand() then
+              luasnip.expand()
+            end
+          end, { silent = true, desc = 'Expand the next snippet.' })
+        end,
       },
       'saadparwaiz1/cmp_luasnip',
 
