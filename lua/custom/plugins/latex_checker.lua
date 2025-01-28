@@ -124,7 +124,11 @@ return {
       trig = 'eq',
       name = 'Equation',
       dscr = 'Insert a LaTeX equation block',
+      snippetType = 'autosnippet',
       condition = function()
+        return is_latex_block_under_cursor()
+      end,
+      show_condition = function()
         return is_latex_block_under_cursor()
       end,
     }, {
