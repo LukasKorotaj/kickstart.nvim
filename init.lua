@@ -762,7 +762,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true, scala = true }
+        local disable_filetypes = { c = true, cpp = true, scala = true, java = true }
         local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = 'never'
@@ -815,10 +815,10 @@ require('lazy').setup({
         config = function()
           local luasnip = require 'luasnip'
 
-          -- Enable autosnippets
-          luasnip.config.setup {
+          luasnip.setup {
             enable_autosnippets = true,
           }
+
           vim.keymap.set('i', '<C-k>', function()
             if luasnip.expand() then
               luasnip.expand()
@@ -838,7 +838,6 @@ require('lazy').setup({
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      luasnip.config.setup {}
 
       cmp.setup {
         snippet = {
@@ -907,7 +906,7 @@ require('lazy').setup({
             group_index = 0,
           },
           { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          { name = 'luasnip', option = { use_show_condition = true } },
           { name = 'path' },
         },
       }
