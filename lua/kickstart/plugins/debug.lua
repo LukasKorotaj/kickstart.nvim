@@ -36,7 +36,10 @@ return {
       { '<F3>', dap.step_out, desc = 'Debug: Step Out' },
       { '<F4>', dap.step_back, desc = 'Debug: Step Back' },
       { '<leader>bb', dap.toggle_breakpoint, desc = 'Debug: Toggle Breakpoint' },
+      { '<leader>bn', dap.terminate, desc = 'Debug: Termi[n]ate' },
+      { '<leader>bc', dap.close, desc = 'Debug: [C]lose' },
       { '<leader>b', '', desc = 'Debug: Debugging' },
+      { '<leader>bp', dap.clear_breakpoints, desc = 'Debug: Clear break[p]oints' },
       {
         '<leader>bB',
         function()
