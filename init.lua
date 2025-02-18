@@ -899,12 +899,14 @@ require('lazy').setup({
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
+        require('cmp_r').setup {},
         sources = {
           {
             name = 'lazydev',
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
             group_index = 0,
           },
+          { name = 'cmp_r' },
           { name = 'nvim_lsp' },
           { name = 'luasnip', option = { use_show_condition = true } },
           { name = 'path' },
