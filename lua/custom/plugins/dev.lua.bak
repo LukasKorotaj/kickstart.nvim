@@ -1,6 +1,6 @@
 return {
   {
-    dir = '~/random/tasknote',
+    dir = '~/random/create-neovim-obsidian-task',
     name = 'tasknote', -- Optional, helps with requiring
     dev = true,
     config = function()
@@ -9,6 +9,11 @@ return {
         keymaps = {
           handle_input = { '<CR>' },
           submit = { '<C-s>' },
+        },
+        statuses = {
+          { command = 'TaskToggleInProgress', symbol = '/', append = ' ' },
+          { command = 'TaskToggleDone', symbol = 'x', append = '[completed:: today' },
+          { command = 'TaskToggleCancelled', symbol = '-', append = '[cancelled:: today]' },
         },
       }
     end,
