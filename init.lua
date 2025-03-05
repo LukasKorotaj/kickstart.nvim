@@ -183,6 +183,9 @@ vim.keymap.set('n', '<leader>jc', '<cmd>JavaTestRunCurrentClass<CR>', { desc = '
 vim.keymap.set('n', '<leader>jm', '<cmd>JavaTestRunCurrentMethod<CR>', { desc = 'Test Current [M]ethod' })
 vim.keymap.set('n', '<leader>jv', '<cmd>JavaTestViewLastReport<CR>', { desc = 'Test [V]iew Last Report' })
 
+--keybinding for last executed command
+vim.keymap.set('n', '<leader>e', '<cmd>@:<CR>j', { desc = '[E]xecute last command' })
+
 --Should fix diagnostics
 vim.diagnostic.config {
   virtual_text = false, -- Disable inline diagnostics for a cleaner look
