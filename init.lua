@@ -527,6 +527,9 @@ require('lazy').setup({
       'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
+      vim.keymap.set({ 'i' }, '<C-s>', function()
+        require('lsp_signature').toggle_float_win()
+      end, { silent = true, noremap = true, desc = 'toggle signature' })
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -721,10 +724,30 @@ require('lazy').setup({
           end,
           jdtls = function()
             require('java').setup {
+              settings = {
+                java = {
+                  signatureHelp = {
+                    enabled = true, -- Enable signature help
+                    description = {
+                      enabled = true,
+                    },
+                  },
+                },
+              },
               -- Your custom jdtls settings goes here
             }
 
             require('lspconfig').jdtls.setup {
+              settings = {
+                java = {
+                  signatureHelp = {
+                    enabled = true, -- Enable signature help
+                    description = {
+                      enabled = true,
+                    },
+                  },
+                },
+              },
               root_markers = {
                 'settings.gradle',
                 'settings.gradle.kts',

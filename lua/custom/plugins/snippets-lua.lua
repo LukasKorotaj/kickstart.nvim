@@ -17,7 +17,7 @@ return {
       name = '{}',
       descr = '{}',
     }}, 
-      fmt(
+      fmta(
         [[
         {}
     ]],
